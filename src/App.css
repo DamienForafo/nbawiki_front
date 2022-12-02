@@ -1,5 +1,15 @@
 .App {
   height: 100%;
   width: 100%;
-  background: slategray;
+  box-sizing: border-box;
+  padding: 7rem 5rem;
+}
+
+#navBar {
+  height: 4rem;
+  width: 50rem;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background-color: lightseagreen;
 }
