@@ -1,5 +1,5 @@
 import React from 'react';
-import './PlayerCard.css'
+import './PlayerCard.css';
 
 export default function PlayerCard() {
     return (

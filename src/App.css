@@ -2,14 +2,21 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  padding: 7rem 5rem;
 }
 
 #navBar {
-  height: 4rem;
+  height: 6rem;
   width: 50rem;
   position: fixed;
   top: 1rem;
   left: 1rem;
   background-color: lightseagreen;
+}
+
+@media only screen and (max-width: 768px) { /* Phones & portrait tablets */
+    .App { padding: 0; }
+    #navBar {
+      width: 100%;
+      position: static;
+    }
 }

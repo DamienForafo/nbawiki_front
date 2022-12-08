@@ -1,5 +1,5 @@
 import React from 'react';
-import './Players.css'
+import './Players.css';
 import '../page.css';
 import PlayerCard from './PlayerCard';
 

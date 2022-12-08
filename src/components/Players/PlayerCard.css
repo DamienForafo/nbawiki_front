@@ -1,5 +1,9 @@
 .PlayerCard {
-    width: 200px;
-    height: 200px;
+    width: 20rem;
+    height: 30rem;
     background-color: darkgrey;
+}
+
+@media only screen and (max-width: 600px) { /* Phones */
+    .PlayerCard { width: 100%; }
 }
