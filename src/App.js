@@ -8,12 +8,16 @@ import Player from './components/Player/Player';
 function App() {
   return (
     <div className="App">
+      <div id="searchBar">
+
+      </div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Players />} />
         </Routes>
       </BrowserRouter>
       <div id="navBar">
+
       </div>
     </div>
   );

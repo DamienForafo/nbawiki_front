@@ -3,6 +3,8 @@ html {
   width: 100vw;
   background: slategray;
   overflow: hidden;
+  --searchBarHeight: 6rem;
+  --navBarHeight: 6rem;
 }
 
 @media only screen and (max-width: 600px) { /* Phones */
