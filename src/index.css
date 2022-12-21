@@ -5,6 +5,7 @@ html {
   overflow: hidden;
   --searchBarHeight: 6rem;
   --navBarHeight: 6rem;
+  --navBarWidth: 50rem;
 }
 
 @media only screen and (max-width: 600px) { /* Phones */
