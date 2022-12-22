@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Routes, Route, Navigate, useNavigate, useLocation} from 'react-router-dom';
@@ -19,11 +19,23 @@ function App() {
   const navigateToRanking = () => {navigate('/ranking');}
   const navigateToProfile = () => {navigate('/profile');}
 
+
+  const [getSuggestion, switchSuggestion] = useState(false);
+
+
   return (
     <div className="App">
-      <div id="searchBar">
-
-      </div>
+      <aside id="searchBar">
+        <input></input>
+          <button onClick={() => switchSuggestion(! getSuggestion)}></button>
+        <img src="" alt="Logo de NBAwiki" />
+        {
+          getSuggestion &&
+            <div id="searchSuggestion">
+              
+            </div>
+        }
+      </aside>
       <Routes>
         <Route path="/players" element={<Players />} />
         <Route path="/" element={<Navigate to="/players" />} />
@@ -31,13 +43,13 @@ function App() {
         <Route path="/teams" element={<Teams />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <div id="navBar" className={currentPage}>
+      <nav id="navBar" className={currentPage}>
         <button id="playersButton" onClick={navigateToPlayers}>JOUEURS</button>
         <button id="teamsButton" onClick={navigateToTeams}>EQUIPES</button>
         <button id="gamesButton" onClick={navigateToGames}>MATCHS</button>
         <button id="rankingButton" onClick={navigateToRanking}>CLASSEMENT</button>
         <button id="profileButton" onClick={navigateToProfile}>PROFIL</button>
-      </div>
+      </nav>
     </div>
   );
 }

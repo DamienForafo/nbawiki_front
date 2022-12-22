@@ -13,6 +13,15 @@
   background-color: sienna;
 }
 
+#searchSuggestion {
+  width: 30rem;
+  height: 30rem;
+  background-color: beige;
+  position: absolute;
+  top: calc(var(--searchBarHeight) + 5px);
+  right: 0;
+}
+
 #navBar {
   height: var(--navBarHeight);
   width: var(--navBarWidth);
@@ -28,6 +37,12 @@
 #navBar.ranking > #rankingButton,
 #navBar.profile > #profileButton {
   color: red;
+}
+
+@media only screen and (max-width: 600px) { /* Phones */
+  #searchSuggestion {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 768px) { /* Phones & portrait tablets */
