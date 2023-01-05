@@ -13,6 +13,10 @@
   background-color: sienna;
 }
 
+#searchBar > img {
+  height: 100%;
+}
+
 #searchSuggestion {
   width: 30rem;
   height: 30rem;
@@ -28,7 +32,19 @@
   position: fixed;
   top: 1rem;
   left: 1rem;
-  background-color: lightseagreen;
+  background-color: #171D33;
+  border-radius: 0.2rem;
+}
+
+#navBar button {
+  background-color: transparent;
+  color: white;
+  border: 0.15rem solid transparent;
+  border-radius: 0.1rem;
+}
+#navBar button:hover {
+  background-color: #18575F;
+  border-color: #1BCECF;
 }
 
 #navBar.players > #playersButton,
@@ -36,7 +52,9 @@
 #navBar.games > #gamesButton,
 #navBar.ranking > #rankingButton,
 #navBar.profile > #profileButton {
-  color: red;
+  background-color: #1DEFEF;
+  border-color: #1DEFEF;
+  color: black;
 }
 
 @media only screen and (max-width: 600px) { /* Phones */

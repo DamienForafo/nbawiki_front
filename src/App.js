@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
+import logo from './nbawiki-logo.png';
 import './App.css';
 import {Routes, Route, Navigate, useNavigate, useLocation} from 'react-router-dom';
 import Players from './components/Players/Players';
@@ -20,15 +20,16 @@ function App() {
   const navigateToProfile = () => {navigate('/profile');}
 
 
-  const [getSuggestion, switchSuggestion] = useState(false);
+  const [getSuggestion, setSuggestion] = useState(false);
+  function switchSuggestion() {setSuggestion(! getSuggestion);}
 
 
   return (
     <div className="App">
       <aside id="searchBar">
         <input></input>
-          <button onClick={() => switchSuggestion(! getSuggestion)}></button>
-        <img src="" alt="Logo de NBAwiki" />
+        <button onClick={switchSuggestion}></button>
+        <img src={logo} alt="Logo de NBAwiki" />
         {
           getSuggestion &&
             <div id="searchSuggestion">
