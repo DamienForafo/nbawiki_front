@@ -5,7 +5,7 @@ import PlayerCard from './PlayerCard';
 
 export default function Players() {
     return (
-        <section id="Players" className="page">
+        <main id="players" className="page">
             <h1>Joueurs</h1>
             <div id="playersList">
                 <PlayerCard />
@@ -85,6 +85,6 @@ export default function Players() {
                 <PlayerCard />
                 <PlayerCard />
             </div>
-        </section>
+        </main>
     )
 }
