@@ -2,19 +2,49 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+  --logoMargin: 0.3rem;
+  --dividerColor: #8C99AE;
+  --filterButtonHeight: 3.3rem;
 }
 
 #searchBar {
   height: var(--searchBarHeight);
-  width: calc(100% - var(--navBarWidth) - 5rem);
   position: fixed;
-  top: 1rem;
-  right: 2rem;
+  top: var(--barsMargin);
+  right: 18px;
   background-color: sienna;
+  display: flex;
+  justify-content: space-between;
+}
+
+#filters {
+  height: 100%;
+  background-color: #18575F;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+#filters > input, #filters > button {
+  background-color: #F9F9FB;
+  border-radius: 0.3rem;
+}
+
+#filters > input {
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+#filters > button {
+  width: var(--filterButtonHeight);
+  height: var(--filterButtonHeight);
+  border: none;
+  cursor: pointer;
 }
 
 #searchBar > img {
-  height: 100%;
+  height: calc(100% - var(--logoMargin) * 2);
+  margin: var(--logoMargin) 2rem var(--logoMargin) 4rem;
 }
 
 #searchSuggestion {
@@ -22,25 +52,32 @@
   height: 30rem;
   background-color: beige;
   position: absolute;
-  top: calc(var(--searchBarHeight) + 5px);
+  border-radius: 0.3rem;
+  top: calc(var(--filterButtonHeight) + 1rem);
   right: 0;
 }
 
 #navBar {
-  height: var(--navBarHeight);
-  width: var(--navBarWidth);
   position: fixed;
-  top: 1rem;
-  left: 1rem;
-  background-color: #171D33;
-  border-radius: 0.2rem;
+  top: var(--barsMargin);
+  left: var(--barsMargin);
+  background-color: #272E3F;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.2rem;
 }
 
-#navBar button {
+#navBar > button {
   background-color: transparent;
   color: white;
   border: 0.15rem solid transparent;
-  border-radius: 0.1rem;
+  border-radius: 0.15rem;
+  padding: 0.5rem 1.2rem 0.3rem 1.2rem;
+  font-weight: bold;
+  margin: 0.1rem;
+  cursor: pointer;
 }
 #navBar button:hover {
   background-color: #18575F;
@@ -49,18 +86,11 @@
 
 #navBar.players > #playersButton,
 #navBar.teams > #teamsButton,
-#navBar.games > #gamesButton,
-#navBar.ranking > #rankingButton,
-#navBar.profile > #profileButton {
+#navBar.games > #gamesButton {
   background-color: #1DEFEF;
   border-color: #1DEFEF;
   color: black;
-}
-
-@media only screen and (max-width: 600px) { /* Phones */
-  #searchSuggestion {
-    width: 100%;
-  }
+  cursor: default;
 }
 
 @media only screen and (max-width: 768px) { /* Phones & portrait tablets */
@@ -68,5 +98,29 @@
   #searchBar, #navBar {
     width: 100%;
     position: static;
+  }
+  #searchBar {
+    align-items: center;
+  }
+  #filters {
+    padding-top: var(--barsMargin);
+    padding-left: var(--barsMargin);
+  }
+  #searchSuggestion {
+    top: calc(var(--barsMargin) + var(--filterButtonHeight) + 1rem);
+    right: auto;
+    left: var(--barsMargin);
+  }
+  #navBar {
+    height: var(--navBarHeight);
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) { /* Phones */
+  #searchSuggestion {
+    width: 100vw;
+    left: 0;
   }
 }

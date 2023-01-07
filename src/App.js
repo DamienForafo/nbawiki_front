@@ -16,8 +16,6 @@ function App() {
   const navigateToPlayers = () => {navigate('/players');}
   const navigateToTeams = () => {navigate('/teams');}
   const navigateToGames = () => {navigate('/games');}
-  const navigateToRanking = () => {navigate('/ranking');}
-  const navigateToProfile = () => {navigate('/profile');}
 
 
   const [getSuggestion, setSuggestion] = useState(false);
@@ -27,15 +25,17 @@ function App() {
   return (
     <div className="App">
       <aside id="searchBar">
-        <input></input>
-        <button onClick={switchSuggestion}></button>
-        <img src={logo} alt="Logo de NBAwiki" />
-        {
-          getSuggestion &&
+        <div id="filters">
+          <input></input>
+          <button onClick={switchSuggestion}></button>
+          {
+            getSuggestion &&
             <div id="searchSuggestion">
               
             </div>
-        }
+          }
+        </div>
+        <img src={logo} alt="Logo de NBAwiki" />
       </aside>
       <Routes>
         <Route path="/players" element={<Players />} />
@@ -48,8 +48,6 @@ function App() {
         <button id="playersButton" onClick={navigateToPlayers}>JOUEURS</button>
         <button id="teamsButton" onClick={navigateToTeams}>EQUIPES</button>
         <button id="gamesButton" onClick={navigateToGames}>MATCHS</button>
-        <button id="rankingButton" onClick={navigateToRanking}>CLASSEMENT</button>
-        <button id="profileButton" onClick={navigateToProfile}>PROFIL</button>
       </nav>
     </div>
   );
