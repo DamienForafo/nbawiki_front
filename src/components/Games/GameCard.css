@@ -1,9 +1,9 @@
-.playerCard {
+.gameCard {
     width: 20rem;
     height: 30rem;
-    background-color: #F3F5F8;
+    background-color: darkgrey;
 }
 
 @media only screen and (max-width: 600px) { /* Phones */
-    .playerCard { width: 100%; }
+    .gameCard { width: 100%; }
 }

@@ -21,7 +21,7 @@ h1 {
 
 @media only screen and (max-width: 768px) { /* Phones & portrait tablets */
     .page {
-        height: calc(100% - var(--searchBarHeight) - var(--navBarHeight));
+        height: calc(100% - var(--searchBarHeight) - var(--dividerWidth) - var(--navBarHeight));
         padding-top: 2rem;
     }
 }

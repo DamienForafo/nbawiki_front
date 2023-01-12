@@ -5,6 +5,7 @@
   --logoMargin: 0.3rem;
   --dividerColor: #8C99AE;
   --filterButtonHeight: 3.3rem;
+  --iconHeight: 1.3rem;
 }
 
 #searchBar {
@@ -12,49 +13,91 @@
   position: fixed;
   top: var(--barsMargin);
   right: 18px;
-  background-color: sienna;
   display: flex;
   justify-content: space-between;
 }
 
-#filters {
+#searchAndfilters {
   height: 100%;
-  background-color: #18575F;
   display: flex;
   align-items: flex-start;
   position: relative;
+  --marginBetweenButtons: 1rem;
 }
 
-#filters > input, #filters > button {
-  background-color: #F9F9FB;
-  border-radius: 0.3rem;
+#searchAndfilters > input, #searchAndfilters > button {
+  background-color: #F3F5F8;
+  border-radius: var(--borderRadius);
+  transition: transform 0.5s, box-shadow 0.5s;
 }
 
-#filters > input {
-  height: 3rem;
-  margin-right: 1rem;
+#searchAndfilters > input {
+  --inputPadding: calc((var(--filterButtonHeight) - var(--iconHeight)) / 2);
+  height: var(--filterButtonHeight);
+  box-sizing: border-box;
+  margin-right: var(--marginBetweenButtons);
+  border: none;
+  box-shadow: none;
+  font-size: 1.4rem;
+  padding-left: var(--inputPadding);
+  padding-right: var(--filterButtonHeight);
+  background-image: url("magnifying-glass.png");
+  background-repeat: no-repeat;
+  background-size: var(--iconHeight);
+  background-position: calc(100% - var(--inputPadding));
+}
+#searchAndfilters > input::placeholder {
+  color: #9497A3;
 }
 
-#filters > button {
+#searchAndfilters > button {
   width: var(--filterButtonHeight);
   height: var(--filterButtonHeight);
   border: none;
   cursor: pointer;
+  background-image: url("filter.png");
+  background-repeat: no-repeat;
+  background-size: var(--iconHeight);
+  background-position: center;
+}
+
+#searchAndfilters > input:not(:focus):hover, #searchAndfilters > button:not(:active):hover {
+  transform: var(--hoverScale);
+  box-shadow: var(--hoverBoxShadow);
+}
+#searchAndfilters > input:focus, #searchAndfilters > button:active {
+  transition: transform 0s, box-shadow 0s;
 }
 
 #searchBar > img {
   height: calc(100% - var(--logoMargin) * 2);
   margin: var(--logoMargin) 2rem var(--logoMargin) 4rem;
+  cursor: pointer;
 }
 
-#searchSuggestion {
+#filterPanel, #suggestions {
+  background-color: var(--navyBackground);
+  position: absolute;
+  border-radius: var(--borderRadius);
+  top: calc(var(--filterButtonHeight) + 0.5rem);
+}
+
+#filterPanel {
+  right: 0;
+  padding: 2rem;
+}
+#filterPanel > h2 {
+  color: white;
+  margin-top: 0;
+}
+#filterPanel > .select:nth-of-type(2) {
+  margin-top: 0.7rem;
+}
+
+#suggestions {
   width: 30rem;
   height: 30rem;
-  background-color: beige;
-  position: absolute;
-  border-radius: 0.3rem;
-  top: calc(var(--filterButtonHeight) + 1rem);
-  right: 0;
+  right: calc(var(--filterButtonHeight) + var(--marginBetweenButtons));
 }
 
 #navBar {
@@ -62,7 +105,7 @@
   top: var(--barsMargin);
   left: var(--barsMargin);
   background-color: #272E3F;
-  border-radius: 0.3rem;
+  border-radius: var(--borderRadius);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -73,7 +116,7 @@
   background-color: transparent;
   color: white;
   border: 0.15rem solid transparent;
-  border-radius: 0.15rem;
+  border-radius: calc(var(--borderRadius) / 2);
   padding: 0.5rem 1.2rem 0.3rem 1.2rem;
   font-weight: bold;
   margin: 0.1rem;
@@ -90,7 +133,6 @@
   background-color: #1DEFEF;
   border-color: #1DEFEF;
   color: black;
-  cursor: default;
 }
 
 @media only screen and (max-width: 768px) { /* Phones & portrait tablets */
@@ -100,13 +142,13 @@
     position: static;
   }
   #searchBar {
-    align-items: center;
+    border-bottom: var(--dividerWidth) solid var(--dividerColor);
   }
-  #filters {
-    padding-top: var(--barsMargin);
+  #searchAndfilters {
+    align-items: center;
     padding-left: var(--barsMargin);
   }
-  #searchSuggestion {
+  #suggestions, #filterPanel {
     top: calc(var(--barsMargin) + var(--filterButtonHeight) + 1rem);
     right: auto;
     left: var(--barsMargin);
@@ -119,7 +161,7 @@
 }
 
 @media only screen and (max-width: 600px) { /* Phones */
-  #searchSuggestion {
+  #suggestions, #filterPanel {
     width: 100vw;
     left: 0;
   }

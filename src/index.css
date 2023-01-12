@@ -1,11 +1,23 @@
 html {
   height: 100vh;
   width: 100vw;
-  background-color: #A7B6CC;
+  background: #AEBDD2;
+  /* Décommenter la ligne suivante pour ajouter un effect brillant en background */
+  /* background: linear-gradient(84deg, #929DB2 0%, #AEBDD2 31%, #BDCDE0 48%, #B4C3D8 62%, #A5B3C8 100%); */
   overflow: hidden;
+  --borderRadius: 0.2rem;
+  --dividerWidth: 2px;
   --searchBarHeight: 6rem;
   --navBarHeight: 5rem;
   --barsMargin: 1rem;
+  --dropdownHeight: 2.3rem;
+
+  --darkGray: rgba(67, 68, 74, 1);
+  --navyBackground: #3B486D;
+
+  --hoverScale: scale(1.02);
+  --hoverBoxShadow: 0 0 0.1rem 0.1rem white;
+  --hoverTransition: transform 0.5s, box-shadow 0.5s;
 }
 
 @media only screen and (max-width: 600px) { /* Phones */

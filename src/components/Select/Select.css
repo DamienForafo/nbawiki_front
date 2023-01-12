@@ -1,0 +1,75 @@
+.select {
+    width: 20rem;
+    --iconHeight: 1.1rem;
+    --selectButtonPadding: 1rem;
+    --boxShadowSpread: 0.1rem;
+}
+
+label {
+    color: white;
+    background-color: transparent;
+    margin-bottom: 0.4rem;
+}
+
+.select > div, .select > p {
+    background-color: #E8E9EB;
+    border-radius: var(--borderRadius);
+}
+
+.selectButton {
+    margin-top: 0.2rem;
+    margin-bottom: var(--boxShadowSpread);
+    padding-left: var(--selectButtonPadding);
+    padding-right: var(--dropdownHeight);
+    background-image: url("../../arrow-drop-down.png");
+    background-repeat: no-repeat;
+    background-size: var(--iconHeight);
+    background-position: calc(100% - var(--selectButtonPadding));
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--hoverTransition);
+    font-weight: bold;
+}
+
+.selectButton:not(:active):hover {
+    transform: var(--hoverScale);
+    box-shadow: var(--hoverBoxShadow);
+}
+
+.selectButton:active {
+    transition: transform 0s, box-shadow 0s;
+}
+
+.selectButton, .selectDropdown > p {
+    height: var(--dropdownHeight);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.selectDropdown {
+    --selectDropdownPadding: 0.2rem;
+    box-shadow: 0 0 0 var(--boxShadowSpread) rgba(67, 68, 74, 0.8);
+    width: 95%;
+    position: absolute;
+    z-index: 2;
+    padding: var(--selectDropdownPadding);
+}
+
+.selectDropdown > p {
+    font-size: 1.2rem;
+    padding: 0 calc(var(--selectButtonPadding) - var(--selectDropdownPadding));
+    margin: 0.2rem;
+    cursor: pointer;
+    border-radius: calc(var(--borderRadius) / 2);
+    font-weight: bold;
+}
+
+.selectDropdown > p:hover {
+    background-color: #CCCCCD;
+}
+.selectDropdown > p.active {
+    background-color: #43444A;
+    color: white;
+}
