@@ -51,7 +51,7 @@ label {
 .selectDropdown {
     --selectDropdownPadding: 0.2rem;
     box-shadow: 0 0 0 var(--boxShadowSpread) rgba(67, 68, 74, 0.8);
-    width: 95%;
+    width: 85%;
     position: absolute;
     z-index: 2;
     padding: var(--selectDropdownPadding);

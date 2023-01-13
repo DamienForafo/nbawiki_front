@@ -12,38 +12,15 @@ import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 
 function App() {
-  const [offline, setoffline] = React.useState(navigator.onLine)
-
-  const handleOffline = () => {
-    setoffline(navigator.onLine)
-  }
-  
-  React.useEffect(() => {
-    window.addEventListener("online", handleOffline)
-    window.addEventListener("offline", handleOffline)
-
-    return () => {
-      window.removeEventListener('online', handleOffline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  },[])
-
-
-  useEffect(() => {
-    if (! offline) navigate('/nimp');
-  }, [offline])
-
-
-
-
   const location = useLocation();
   const currentPage = location.pathname.split('/')[1];
 
   const navigate = useNavigate();
 
-  function navigateToPlayers () {navigate('/players');}
-  function navigateToTeams () {navigate('/teams');}
-  function navigateToGames () {navigate('/games');}
+  function navigateToPlayers() {navigate('/players');}
+  function navigateToTeams() {navigate('/teams');}
+  function navigateToGames() {navigate('/games');}
+
 
   const [inputValue, setInputValue] = useState('');
   useEffect(() => {
