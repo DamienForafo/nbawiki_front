@@ -14,10 +14,8 @@ html {
 
   --darkGray: rgba(67, 68, 74, 1);
   --navyBackground: #3B486D;
-
-  --hoverScale: scale(1.02);
-  --hoverBoxShadow: 0 0 0.1rem 0.1rem white;
-  --hoverTransition: transform 0.5s, box-shadow 0.5s;
+  
+  color: #0D0D22;
 }
 
 @media only screen and (max-width: 600px) { /* Phones */
@@ -63,4 +61,16 @@ p {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.hoverable:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 0.1rem 0.1rem white;
+  transition: transform 0.4s, box-shadow 0.4s;
+  filter: brightness(104%);
+}
+.hoverable:active, input.hoverable:focus {
+  transition: transform 0s, box-shadow 0s;
+  box-shadow: none;
+  transform: scale(1);
 }

@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import {Routes, Route, Navigate, useNavigate, useLocation} from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Select from './components/Select/Select';
 import Players from './components/Players/Players';
 import Player from './components/Player/Player';
@@ -9,6 +9,7 @@ import Team from './components/Team/Team';
 import Games from './components/Games/Games';
 import Game from './components/Game/Game';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
+import logo from './images/nbawiki-logo.png';
 
 
 function App() {
@@ -17,16 +18,16 @@ function App() {
 
   const navigate = useNavigate();
 
-  function navigateToPlayers() {navigate('/players');}
-  function navigateToTeams() {navigate('/teams');}
-  function navigateToGames() {navigate('/games');}
+  function navigateToPlayers() { navigate('/players'); }
+  function navigateToTeams() { navigate('/teams'); }
+  function navigateToGames() { navigate('/games'); }
 
 
   const [inputValue, setInputValue] = useState('');
   useEffect(() => {
     const timer = setTimeout(() => {
       if (inputValue) {
-        if (! suggestionsDisplayed) setSuggestionsDisplayed(true);
+        if (!suggestionsDisplayed) setSuggestionsDisplayed(true);
         console.log('appel API');
       }
       else collapseSuggestions();
@@ -41,48 +42,57 @@ function App() {
   }
   function switchFilters() {
     collapseFilters();
-    setFiltersDisplayed(! filtersDisplayed);
+    setFiltersDisplayed(!filtersDisplayed);
   }
 
   const [suggestionsDisplayed, setSuggestionsDisplayed] = useState(false);
-  function collapseSuggestions() {if (suggestionsDisplayed) setSuggestionsDisplayed(false);}
+  function collapseSuggestions() { if (suggestionsDisplayed) setSuggestionsDisplayed(false); }
 
   function hidePanels() {
     collapseFilters();
     collapseSuggestions();
   }
-  
-  const [season, setSeason] = useState({value: 'a', label: 'A'});
+
+  const [season, setSeason] = useState({ value: 2022, label: 2022 });
   function sendSeason(s) {
     setSeason(s);
     setSeasonSelectState(false);
   }
   const [seasonSelectState, setSeasonSelectState] = useState(false);
-  function switchSeasonSelectState() {setSeasonSelectState(! seasonSelectState)}
+  function switchSeasonSelectState() { setSeasonSelectState(!seasonSelectState) }
 
-  const [team, setTeam] = useState({value: 'all', label: 'TOUTES'});
+  const [team, setTeam] = useState({ value: 'all', label: 'TOUTES' });
   function sendTeam(t) {
     setTeam(t);
     setTeamSelectState(false);
   }
   const [teamSelectState, setTeamSelectState] = useState(false);
-  function switchTeamSelectState() {setTeamSelectState(! teamSelectState)}
+  function switchTeamSelectState() { setTeamSelectState(!teamSelectState) }
 
   function collapseDropdowns() {
     if (seasonSelectState) setSeasonSelectState(false);
     if (teamSelectState) setTeamSelectState(false);
   }
 
-  const seasonOptions = [
-    {value: 'a', label: 'A'},
-    {value: 'b', label: 'B'},
-    {value: 'c', label: 'C'}
-  ]; // à virer
-  const teamOptions = [
-    {value: 'a', label: 'A'},
-    {value: 'b', label: 'B'},
-    {value: 'c', label: 'C'}
-  ]; // à virer
+  // Hardcode des saisons
+  let seasonOptions = [];
+  for (let s = 2022; s >= 1995; s--) { seasonOptions.push({ value: s, label: s }) }
+
+  const [teamOptions, setTeamOptions] = useState([]);
+
+  React.useEffect(() => {
+    fetch('https://nba-wiki-back.herokuapp.com/teams')
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setTeamOptions([{value: 'all', label: 'TOUTES'}].concat(
+          data.map(t => {
+            return {value: t.id, label: t.full_name};
+          })
+        ));
+      });
+  }, []);
 
 
   return (
@@ -94,9 +104,10 @@ function App() {
             placeholder="Chercher..."
             value={inputValue}
             title="Chercher dans l'application"
+            className="hoverable"
             onChange={e => setInputValue(e.target.value)}
           />
-          <button onClick={switchFilters} title="Afficher / Masquer les filtres"></button>
+          <button className="hoverable" onClick={switchFilters} title="Afficher / Masquer les filtres"></button>
           {
             filtersDisplayed &&
             <div id="filterPanel" onClick={e => {
@@ -127,14 +138,31 @@ function App() {
           {
             suggestionsDisplayed &&
             <div id="suggestions" onClick={e => e.stopPropagation()}>
-
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
             </div>
           }
         </div>
-        <img src="./nbawiki-logo.png" alt="Logo de NBAwiki" title="Logo de NBAwiki" onClick={navigateToPlayers} />
+        <img src={logo} alt="Logo de NBAwiki" title="Logo de NBAwiki" onClick={navigateToPlayers} />
       </aside>
       <Routes>
-        <Route path="/players" element={<Players />} />
+        <Route path="/players" element={<Players teamId={team} />} />
         <Route path="/" element={<Navigate to="/players" />} />
         <Route path="/players/:playerId" element={<Player />} />
         <Route path="/teams" element={<Teams />} />
@@ -144,9 +172,9 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <nav id="navBar" className={currentPage}>
-        <button id="playersButton" title="Naviguer versl la page Joueurs" onClick={navigateToPlayers}>JOUEURS</button>
-        <button id="teamsButton" title="Naviguer versl la page Equipes" onClick={navigateToTeams}>EQUIPES</button>
-        <button id="gamesButton" title="Naviguer versl la page Matchs" onClick={navigateToGames}>MATCHS</button>
+        <button id="playersButton" title="Naviguer vers la page Joueurs" onClick={navigateToPlayers}>JOUEURS</button>
+        <button id="teamsButton" title="Naviguer vers la page Equipes" onClick={navigateToTeams}>EQUIPES</button>
+        <button id="gamesButton" title="Naviguer vers la page Matchs" onClick={navigateToGames}>MATCHS</button>
       </nav>
     </div>
   );

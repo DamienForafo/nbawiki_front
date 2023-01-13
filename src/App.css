@@ -28,7 +28,6 @@
 #searchAndfilters > input, #searchAndfilters > button {
   background-color: #F3F5F8;
   border-radius: var(--borderRadius);
-  transition: transform 0.5s, box-shadow 0.5s;
 }
 
 #searchAndfilters > input {
@@ -41,7 +40,7 @@
   font-size: 1.4rem;
   padding-left: var(--inputPadding);
   padding-right: var(--filterButtonHeight);
-  background-image: url("magnifying-glass.png");
+  background-image: url("images/magnifying-glass.png");
   background-repeat: no-repeat;
   background-size: var(--iconHeight);
   background-position: calc(100% - var(--inputPadding));
@@ -55,18 +54,11 @@
   height: var(--filterButtonHeight);
   border: none;
   cursor: pointer;
-  background-image: url("filter.png");
+  background-image: url("images/filter.png");
   background-repeat: no-repeat;
   background-size: var(--iconHeight);
   background-position: center;
-}
-
-#searchAndfilters > input:not(:focus):hover, #searchAndfilters > button:not(:active):hover {
-  transform: var(--hoverScale);
-  box-shadow: var(--hoverBoxShadow);
-}
-#searchAndfilters > input:focus, #searchAndfilters > button:active {
-  transition: transform 0s, box-shadow 0s;
+  cursor: pointer;
 }
 
 #searchBar > img {
@@ -95,9 +87,48 @@
 }
 
 #suggestions {
-  width: 30rem;
-  height: 30rem;
+  max-height: 20rem;
+  overflow-y: scroll;
   right: calc(var(--filterButtonHeight) + var(--marginBetweenButtons));
+  padding: 1rem;
+}
+/* width */
+#suggestions::-webkit-scrollbar {
+    width: 1rem;
+}
+/* Track */
+#suggestions::-webkit-scrollbar-track {
+    background: transparent;
+  }
+/* Handle */
+#suggestions::-webkit-scrollbar-thumb {
+    background: #96999B;
+    border-radius: var(--borderRadius);
+}
+/* Handle on hover */
+#suggestions::-webkit-scrollbar-thumb:hover {
+    background: #B4B7BA;
+}
+
+#suggestions > p {
+  width: 20rem;
+  background-color: #E4E9F0;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: calc(var(--borderRadius) / 2);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+  cursor: pointer;
+}
+#suggestions > p:not(:first-child) {
+  margin-top: 0.5rem;
+}
+
+#suggestions > p > span:last-child {
+  color: #61636B;
 }
 
 #navBar {
@@ -162,7 +193,6 @@
 
 @media only screen and (max-width: 600px) { /* Phones */
   #suggestions, #filterPanel {
-    width: 100vw;
-    left: 0;
+    left: var(--barsMargin);
   }
 }

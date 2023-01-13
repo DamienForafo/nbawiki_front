@@ -1,9 +1,9 @@
 .gameCard {
-    width: 20rem;
-    height: 30rem;
-    background-color: darkgrey;
+    background-color: #E4E9F0;
+    padding: 2rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
 }
-
-@media only screen and (max-width: 600px) { /* Phones */
-    .gameCard { width: 100%; }
+.gameCard > h3 {
+    margin-top: 0;
 }

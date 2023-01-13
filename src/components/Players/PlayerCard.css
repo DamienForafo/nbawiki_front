@@ -1,9 +1,9 @@
 .playerCard {
-    width: 20rem;
-    height: 30rem;
-    background-color: #F3F5F8;
+    background-color: #E4E9F0;
+    padding: 2rem;
+    border-radius: var(--borderRadius);
+    cursor: pointer;
 }
-
-@media only screen and (max-width: 600px) { /* Phones */
-    .playerCard { width: 100%; }
+.playerCard > h3 {
+    margin-top: 0;
 }

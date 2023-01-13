@@ -7,7 +7,7 @@ export default function Player() {
     const params = useParams();
     return (
         <main id="player" className="page">
-            PLayer Id : {params.playerId}
+            Player Id : {params.playerId}
         </main>
     )
 }

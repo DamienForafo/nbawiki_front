@@ -21,7 +21,7 @@ label {
     margin-bottom: var(--boxShadowSpread);
     padding-left: var(--selectButtonPadding);
     padding-right: var(--dropdownHeight);
-    background-image: url("../../arrow-drop-down.png");
+    background-image: url("../../images/arrow-drop-down.png");
     background-repeat: no-repeat;
     background-size: var(--iconHeight);
     background-position: calc(100% - var(--selectButtonPadding));
@@ -30,6 +30,7 @@ label {
     cursor: pointer;
     transition: var(--hoverTransition);
     font-weight: bold;
+    color: #0D0D22;
 }
 
 .selectButton:not(:active):hover {
@@ -55,6 +56,25 @@ label {
     position: absolute;
     z-index: 2;
     padding: var(--selectDropdownPadding);
+    max-height: 20rem;
+    overflow-y: auto;
+}
+/* width */
+.selectDropdown::-webkit-scrollbar {
+    width: 1rem;
+}
+/* Track */
+.selectDropdown::-webkit-scrollbar-track {
+    background: transparent;
+  }
+/* Handle */
+.selectDropdown::-webkit-scrollbar-thumb {
+    background: #83858E;
+    border-radius: var(--borderRadius);
+}
+/* Handle on hover */
+.selectDropdown::-webkit-scrollbar-thumb:hover {
+    background: #6F7077;
 }
 
 .selectDropdown > p {
@@ -64,12 +84,15 @@ label {
     cursor: pointer;
     border-radius: calc(var(--borderRadius) / 2);
     font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #0D0D22;
 }
 
 .selectDropdown > p:hover {
     background-color: #CCCCCD;
 }
-.selectDropdown > p.active {
+.selectDropdown > p.selected {
     background-color: #43444A;
     color: white;
 }

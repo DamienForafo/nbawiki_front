@@ -1,10 +1,11 @@
 import React from 'react';
 import './PlayerCard.css';
 
-export default function PlayerCard() {
+export default function PlayerCard(props) {
     return (
-        <div className="playerCard">
-
+        <div className="playerCard hoverable">
+            <h3>{props.name}</h3>
+            <p>{props.team}</p>
         </div>
     )
 }

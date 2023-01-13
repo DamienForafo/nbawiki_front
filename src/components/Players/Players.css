@@ -1,5 +1,5 @@
 #playersList {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4rem;
+    flex-direction: column;
+    gap: 2rem;
 }

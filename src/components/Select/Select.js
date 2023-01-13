@@ -9,11 +9,14 @@ export default function Select(props) {
                 {props.selected.label}
             </p>
             {
-                props.state && // Mettre .active sur le p déjà choisi
+                props.state &&
                 <div className="selectDropdown">
-                    <p onClick={e => props.sendSelected(props.options[0])}>{props.options[0].label}</p>
-                    <p onClick={e => props.sendSelected(props.options[1])}>{props.options[1].label}</p>
-                    <p onClick={e => props.sendSelected(props.options[2])}>{props.options[2].label}</p>
+                    {
+                        props.options.map(option => {
+                            let selectedClass = (option.value === props.selected.value) ? 'selected' : '';
+                            return <p key={option.value} className={selectedClass} onClick={e => props.sendSelected(option)}>{option.label}</p>
+                        })
+                    }
                 </div>
             }
         </div>
