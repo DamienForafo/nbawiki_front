@@ -17,7 +17,14 @@ export default function Games(props) {
             <h1>MATCHS</h1>
             <div id="gamesList">
                 {
-                    games.map(g => {return <GameCard key={g.id} teams={`${g.home_team.abbreviation} vs ${g.visitor_team.abbreviation}`} date={g.date} />})
+                    games.map(g => {
+                        return <GameCard
+                            key={g.id}
+                            teams={`${g.home_team.abbreviation} vs ${g.visitor_team.abbreviation}`}
+                            date={g.date}
+                            nav={() => props.navigateToGame(g.id)}
+                        />
+                    })
                 }
             </div>
         </main>

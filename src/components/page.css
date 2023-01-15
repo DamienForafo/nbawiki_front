@@ -6,6 +6,17 @@
     overflow-y: auto;
 }
 
+.page > button {
+    width: var(--filterButtonHeight);
+    height: var(--filterButtonHeight);
+    border: none;
+    background-image: url("../images/left-arrow.png");
+    background-repeat: no-repeat;
+    background-size: var(--iconHeight);
+    background-position: center;
+    cursor: pointer;
+}
+
 h1 {
     margin-top: 0;
 }

@@ -1,4 +1,5 @@
 .teamCard {
+    width: 15rem;
     background-color: #E4E9F0;
     padding: 2rem;
     border-radius: var(--borderRadius);

@@ -17,7 +17,14 @@ export default function Teams(props) {
             <h1>EQUIPES</h1>
             <div id="teamsList">
                 {
-                    teams.map(t => {return <TeamCard key={t.id} name={t.full_name} division={t.division} />})
+                    teams.map(t => {
+                        return <TeamCard
+                            key={t.id}
+                            name={t.full_name}
+                            division={t.division}
+                            nav={() => props.navigateToTeam(t.id)}
+                        />
+                    })
                 }
             </div>
         </main>

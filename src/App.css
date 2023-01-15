@@ -25,11 +25,6 @@
   --marginBetweenButtons: 1rem;
 }
 
-#searchAndfilters > input, #searchAndfilters > button {
-  background-color: #F3F5F8;
-  border-radius: var(--borderRadius);
-}
-
 #searchAndfilters > input {
   --inputPadding: calc((var(--filterButtonHeight) - var(--iconHeight)) / 2);
   height: var(--filterButtonHeight);
@@ -44,6 +39,7 @@
   background-repeat: no-repeat;
   background-size: var(--iconHeight);
   background-position: calc(100% - var(--inputPadding));
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 #searchAndfilters > input::placeholder {
   color: #9497A3;
@@ -53,12 +49,12 @@
   width: var(--filterButtonHeight);
   height: var(--filterButtonHeight);
   border: none;
-  cursor: pointer;
   background-image: url("images/filter.png");
   background-repeat: no-repeat;
   background-size: var(--iconHeight);
   background-position: center;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #searchBar > img {
@@ -141,6 +137,7 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 0.2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #navBar > button {
@@ -167,7 +164,7 @@
 }
 
 @media only screen and (max-width: 768px) { /* Phones & portrait tablets */
-  .App { padding: 0; }
+  .App { padding: 1rem; }
   #searchBar, #navBar {
     width: 100%;
     position: static;
@@ -179,6 +176,9 @@
     align-items: center;
     padding-left: var(--barsMargin);
   }
+  #searchAndFilters > input, #searchAndFilters > button {
+    box-shadow: none
+  }
   #suggestions, #filterPanel {
     top: calc(var(--barsMargin) + var(--filterButtonHeight) + 1rem);
     right: auto;
@@ -188,6 +188,7 @@
     height: var(--navBarHeight);
     border-radius: 0;
     padding: 0;
+    box-shadow: none
   }
 }
 

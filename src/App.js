@@ -19,8 +19,11 @@ function App() {
   const navigate = useNavigate();
 
   function navigateToPlayers() { navigate('/players'); }
+  function navigateToPlayer(playerId) { navigate(`/players/${playerId}`); }
   function navigateToTeams() { navigate('/teams'); }
+  function navigateToTeam(teamId) { navigate(`/teams/${teamId}`); }
   function navigateToGames() { navigate('/games'); }
+  function navigateToGame(gameId) { navigate(`/games/${gameId}`); }
 
 
   const [inputValue, setInputValue] = useState('');
@@ -104,10 +107,10 @@ function App() {
             placeholder="Chercher..."
             value={inputValue}
             title="Chercher dans l'application"
-            className="hoverable"
+            className="mainInteraction hoverable"
             onChange={e => setInputValue(e.target.value)}
           />
-          <button className="hoverable" onClick={switchFilters} title="Afficher / Masquer les filtres"></button>
+          <button className="mainInteraction hoverable" onClick={switchFilters} title="Afficher / Masquer les filtres"></button>
           {
             filtersDisplayed &&
             <div id="filterPanel" onClick={e => {
@@ -162,13 +165,13 @@ function App() {
         <img src={logo} alt="Logo de NBAwiki" title="Logo de NBAwiki" onClick={navigateToPlayers} />
       </aside>
       <Routes>
-        <Route path="/players" element={<Players teamId={team} />} />
+        <Route path="/players" element={<Players teamId={team.value} navigateToPlayer={navigateToPlayer} />} />
         <Route path="/" element={<Navigate to="/players" />} />
-        <Route path="/players/:playerId" element={<Player />} />
-        <Route path="/teams" element={<Teams />} />
-        <Route path="/teams/:teamId" element={<Team />} />
-        <Route path="/games" element={<Games />} />
-        <Route path="/games/:gameId" element={<Game />} />
+        <Route path="/players/:playerId" element={<Player navigateToPlayers={navigateToPlayers} />} />
+        <Route path="/teams" element={<Teams navigateToTeam={navigateToTeam} />} />
+        <Route path="/teams/:teamId" element={<Team navigateToTeams={navigateToTeams} />} />
+        <Route path="/games" element={<Games navigateToGame={navigateToGame} />} />
+        <Route path="/games/:gameId" element={<Game navigateToGames={navigateToGames} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <nav id="navBar" className={currentPage}>
