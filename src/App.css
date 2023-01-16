@@ -14,6 +14,7 @@
   top: var(--barsMargin);
   right: 18px;
   display: flex;
+  z-index: 1;
   justify-content: space-between;
 }
 
@@ -27,6 +28,7 @@
 
 #searchAndfilters > input {
   --inputPadding: calc((var(--filterButtonHeight) - var(--iconHeight)) / 2);
+  width: 15rem;
   height: var(--filterButtonHeight);
   box-sizing: border-box;
   margin-right: var(--marginBetweenButtons);
@@ -59,7 +61,7 @@
 
 #searchBar > img {
   height: calc(100% - var(--logoMargin) * 2);
-  margin: var(--logoMargin) 2rem var(--logoMargin) 4rem;
+  margin: var(--logoMargin) 2rem var(--logoMargin) 3rem;
   cursor: pointer;
 }
 
@@ -164,7 +166,9 @@
 }
 
 @media only screen and (max-width: 768px) { /* Phones & portrait tablets */
-  .App { padding: 1rem; }
+  .App {
+    --logoMargin: 0.8rem;
+  }
   #searchBar, #navBar {
     width: 100%;
     position: static;
@@ -176,8 +180,11 @@
     align-items: center;
     padding-left: var(--barsMargin);
   }
-  #searchAndFilters > input, #searchAndFilters > button {
-    box-shadow: none
+  #searchBar input, #searchBar button {
+    box-shadow: none;
+  }
+  #searchBar > img {
+    margin: var(--logoMargin) 1rem var(--logoMargin) 2rem;
   }
   #suggestions, #filterPanel {
     top: calc(var(--barsMargin) + var(--filterButtonHeight) + 1rem);

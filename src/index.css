@@ -19,19 +19,19 @@ html {
 }
 
 @media only screen and (max-width: 600px) { /* Phones */
-  html { font-size: 7px; }
-}
-
-@media only screen and (min-width: 600px) { /* Large phones & portrait tablets */
-  html { font-size: 8px; }
-}
-
-@media only screen and (min-width: 768px) { /* Landscape tablets */
   html { font-size: 10px; }
 }
 
-@media only screen and (min-width: 992px) { /* Laptops & desktops */
+@media only screen and (min-width: 600px) { /* Large phones & portrait tablets */
+  html { font-size: 11px; }
+}
+
+@media only screen and (min-width: 768px) { /* Landscape tablets */
   html { font-size: 12px; }
+}
+
+@media only screen and (min-width: 992px) { /* Laptops & desktops */
+  html { font-size: 13px; }
 }
 
 @media only screen and (min-width: 1200px) { /* Large laptops & desktops */
