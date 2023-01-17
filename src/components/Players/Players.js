@@ -5,13 +5,15 @@ import PlayerCard from './PlayerCard';
 
 export default function Players(props) {
     const [players, setPlayers] = useState([]);
-    React.useEffect(() => {
-        fetch('https://nba-wiki-back.herokuapp.com/players')
+    useEffect(() => {
+        const urlSuffix = (props.teamId === 'all') ? '' : `/team?teamid=${props.teamId}`;
+        const url = 'https://nba-wiki-back.herokuapp.com/players' + urlSuffix;
+        fetch(url)
             .then((res) => {
                 return res.json();
             })
-            .then((data) => setPlayers(data));
-    }, []);
+            .then((data) => {if (! Object.keys(data).includes('message')) setPlayers(data)});
+    }, [props.teamId]);
     return (
         <main id="players" className="page">
             <h1>JOUEURS</h1>

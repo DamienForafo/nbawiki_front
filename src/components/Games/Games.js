@@ -1,11 +1,11 @@
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import './Games.css';
 import '../page.css';
 import GameCard from './GameCard';
 
 export default function Games(props) {
     const [games, setGames] = useState([]);
-    React.useEffect(() => {
+    useEffect(() => {
         fetch('https://nba-wiki-back.herokuapp.com/games?date=2018-10-16')
             .then((res) => {
                 return res.json();

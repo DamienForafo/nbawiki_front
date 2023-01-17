@@ -83,7 +83,7 @@ function App() {
 
   const [teamOptions, setTeamOptions] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch('https://nba-wiki-back.herokuapp.com/teams')
       .then((res) => {
         return res.json();
@@ -167,7 +167,7 @@ function App() {
       <Routes>
         <Route path="/players" element={<Players teamId={team.value} navigateToPlayer={navigateToPlayer} />} />
         <Route path="/" element={<Navigate to="/players" />} />
-        <Route path="/players/:playerId" element={<Player navigateToPlayers={navigateToPlayers} />} />
+        <Route path="/players/:playerId" element={<Player season={season.value} navigateToPlayers={navigateToPlayers} />} />
         <Route path="/teams" element={<Teams navigateToTeam={navigateToTeam} />} />
         <Route path="/teams/:teamId" element={<Team navigateToTeams={navigateToTeams} />} />
         <Route path="/games" element={<Games navigateToGame={navigateToGame} />} />
