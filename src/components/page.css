@@ -15,6 +15,7 @@
     background-size: var(--iconHeight);
     background-position: center;
     cursor: pointer;
+    margin-bottom: 1rem;
 }
 
 h1 {
@@ -27,7 +28,7 @@ h1 {
     }
 }
 
-@media only screen and (max-width: 768px) { /* Phones & portrait tablets */
+@media only screen and (max-width: 992px) { /* Phones & portrait tablets */
     .page {
         height: calc(100% - var(--searchBarHeight) - var(--dividerWidth) - var(--navBarHeight));
         padding: 2rem 1rem;

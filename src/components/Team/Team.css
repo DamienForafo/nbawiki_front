@@ -1,0 +1,26 @@
+div#teamInfos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div#teamInfos > div {
+    background-color: var(--darkCard);
+    border-radius: var(--borderRadius);
+    padding: 2rem;
+    height: fit-content;
+}
+
+div#teamInfos > div:not(:last-child) {
+    margin: 0 0.5rem 0.5rem 0;
+}
+
+div#teamInfos > div > p:last-child {
+    color: var(--darkCardSecondary);
+}
+
+div#teamInfos > div > p:first-child {
+    color: var(--darkCardPrimary);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}

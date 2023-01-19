@@ -165,7 +165,7 @@
   color: black;
 }
 
-@media only screen and (max-width: 768px) { /* Phones & portrait tablets */
+@media only screen and (max-width: 992px) { /* Phones & portrait tablets */
   .App {
     --logoMargin: 0.8rem;
   }

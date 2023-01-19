@@ -1,0 +1,40 @@
+h1 ~ p {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+}
+
+div#gameTeams {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div#gameTeams > div {
+    background-color: var(--darkCard);
+    border-radius: var(--borderRadius);
+    padding: 2rem;
+    height: fit-content;
+}
+
+div#gameTeams > div:first-child {
+    margin: 0 2rem 2rem 0;
+}
+
+div#gameTeams > div > p:last-child {
+    color: var(--darkCardSecondary);
+    font-size: 1.2rem;
+}
+
+div#gameTeams > div > h3 {
+    color: white;
+}
+div#gameTeams > div > h3:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+div#gameTeams > div > p:first-of-type {
+    color: var(--darkCardPrimary);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}

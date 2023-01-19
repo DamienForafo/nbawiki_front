@@ -27,13 +27,21 @@ function App() {
 
 
   const [inputValue, setInputValue] = useState('');
+  const [searchedPlayers, setSearchedPlayers] = useState([]);
   useEffect(() => {
     const timer = setTimeout(() => {
       if (inputValue) {
         if (!suggestionsDisplayed) setSuggestionsDisplayed(true);
-        console.log('appel API');
+        fetch(`https://nba-wiki-back.herokuapp.com/players/search?name=${inputValue}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => setSearchedPlayers(data));
       }
-      else collapseSuggestions();
+      else {
+        collapseSuggestions();
+        setSearchedPlayers([]);
+      }
     }, 500)
     return () => clearTimeout(timer);
   }, [inputValue])
@@ -141,24 +149,21 @@ function App() {
           {
             suggestionsDisplayed &&
             <div id="suggestions" onClick={e => e.stopPropagation()}>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
-              <p className="hoverable"><span>Ike Anigbogu</span><span>IND</span></p>
+              {
+                searchedPlayers.map(player => {
+                  return <p
+                    key={player.id}
+                    className="hoverable"
+                    onClick={() => {
+                      hidePanels();
+                      navigateToPlayer(player.id);
+                    }}
+                  >
+                    <span>{`${player.first_name} ${player.last_name}`}</span>
+                    <span>{player.team.abbreviation}</span>
+                  </p>
+                })
+              }
             </div>
           }
         </div>
@@ -167,11 +172,11 @@ function App() {
       <Routes>
         <Route path="/players" element={<Players teamId={team.value} navigateToPlayer={navigateToPlayer} />} />
         <Route path="/" element={<Navigate to="/players" />} />
-        <Route path="/players/:playerId" element={<Player season={season.value} navigateToPlayers={navigateToPlayers} />} />
+        <Route path="/players/:playerId" element={<Player season={season.value} navigateToTeam={navigateToTeam} navigateToPlayers={navigateToPlayers} />} />
         <Route path="/teams" element={<Teams navigateToTeam={navigateToTeam} />} />
         <Route path="/teams/:teamId" element={<Team navigateToTeams={navigateToTeams} />} />
-        <Route path="/games" element={<Games navigateToGame={navigateToGame} />} />
-        <Route path="/games/:gameId" element={<Game navigateToGames={navigateToGames} />} />
+        <Route path="/games" element={<Games season={season.value} navigateToGame={navigateToGame} />} />
+        <Route path="/games/:gameId" element={<Game navigateToTeam={navigateToTeam} navigateToGames={navigateToGames} />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <nav id="navBar" className={currentPage}>

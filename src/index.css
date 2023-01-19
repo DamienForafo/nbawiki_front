@@ -14,6 +14,9 @@ html {
 
   --darkGray: rgba(67, 68, 74, 1);
   --navyBackground: #3B486D;
+  --darkCard: #31384A;
+  --darkCardPrimary: #22DADB;
+  --darkCardSecondary: #979799;
   
   color: #0D0D22;
 }

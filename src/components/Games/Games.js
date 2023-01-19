@@ -6,12 +6,12 @@ import GameCard from './GameCard';
 export default function Games(props) {
     const [games, setGames] = useState([]);
     useEffect(() => {
-        fetch('https://nba-wiki-back.herokuapp.com/games?date=2018-10-16')
+        fetch('https://nba-wiki-back.herokuapp.com/games?season=' + props.season)
             .then((res) => {
                 return res.json();
             })
             .then((data) => setGames(data));
-    }, []);
+    }, [props.season]);
     return (
         <main id="games" className="page">
             <h1>MATCHS</h1>

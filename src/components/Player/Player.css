@@ -1,0 +1,36 @@
+div#playerInfos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div#playerInfos > div {
+    background-color: var(--darkCard);
+    border-radius: var(--borderRadius);
+    padding: 2rem;
+    height: fit-content;
+}
+
+div#playerInfos > div:not(:last-child) {
+    margin: 0 0.5rem 0.5rem 0;
+}
+
+div#playerInfos > div > p:last-child {
+    color: var(--darkCardSecondary);
+}
+
+div#playerInfos > div > p:first-child {
+    color: var(--darkCardPrimary);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+div#playerInfos > div:first-child > p:first-child:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#player > p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
